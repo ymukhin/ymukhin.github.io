@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Yaroslav Mukhin | Cornell University</title>
+  <title>Yaroslav Mukhin </title>
   <meta name="description" content="Yaroslav Mukhin — statistics, econometrics, and machine learning. Research on influence functions, kernel methods, survival analysis, and robust inference.">
   <meta name="author" content="Yaroslav Mukhin">
   <meta name="theme-color" content="#ffffff">
@@ -159,12 +159,12 @@
           </div>
           <p class="authors">With <a class="coauthor" href="https://cam.cornell.edu/people/tereza-oprea/">Tereza Oprea</a>, <a class="coauthor" href="https://aanderer.github.io/">Arielle Anderer</a>, <a class="coauthor" href="https://cleeyu.orie.cornell.edu/">Christina Lee Yu</a>, <a class="coauthor" href="https://www.jelenabradic.net/">Jelena Bradic</a>.</p>
           <p class="venue">Preprint, <time class="paper-year" datetime="2026">2026</time>.</p>
-          <p>Using post-treatment histories to recover information lost to censoring, without changing the marginal causal estimand.</p>
+          <p>We condition on a post-treatment event history to recover information lost to censoring, without changing the marginal causal estimand.</p>
 
           <details class="figure-note" id="trajectory-note">
             <summary>About the header graphic</summary>
-            <p>The header adapts the observed-data panel of my “Stopped trajectories” slide,
-              with the probability cloud and censoring cuts added from its upper panel.</p>
+            <p>The header adapts the observed-data panel of my “Stopped trajectories” slide:
+              censoring partially hides the event history, degrading efficiency and potentially introducing bias. Conditioning on intermediate events partly recovers information lost to censoring and makes censoring ignorability more plausible. </p>
             <figure>
               <img src="assets/stopped-trajectories.svg" width="395" height="185"
                    loading="lazy" alt="The probability space maps to three illness–death paths. Blue: recurrence at 3, observed death at 6, censoring at 8. Orange: censoring at 4, hidden death at 7.5. Purple: recurrence at 2, censoring at 5, hidden death at 9.">
@@ -181,22 +181,22 @@
         <article class="paper" id="kif" data-bib-key="mukhin2025kernel">
           <div class="paper-heading">
             <h3><a href="https://papers.nips.cc/paper_files/paper/2025/hash/0dde49ec491174a11272c5e1e6013f9f-Abstract-Conference.html">Kernel von Mises Formula of the Influence Function</a></h3>
-            <p class="resources" aria-label="Paper resources"><span class="resource-separator" aria-hidden="true">/</span><a href="https://openreview.net/pdf?id=UwAgCUWJ21">PDF</a><span class="resource-separator" aria-hidden="true">/</span><a href="https://slideslive.com/39050475/kernel-von-mises-formula-of-the-influence-function">Talk</a></p>
+            <p class="resources" aria-label="Paper resources"><span class="resource-separator" aria-hidden="true">/</span><a href="https://openreview.net/pdf?id=z3N8xeQiAK">PDF</a><span class="resource-separator" aria-hidden="true">/</span><a href="https://slideslive.com/39050475/kernel-von-mises-formula-of-the-influence-function">Talk</a></p>
           </div>
           <p class="authors">Yaroslav Mukhin.</p>
           <p class="venue">NeurIPS, <time class="paper-year" datetime="2025">2025</time>.</p>
-          <p>A spectral representation and low-rank RKHS estimator of influence functions, computed without analytic derivations by the user.</p>
+          <p>A spectral representation and low-rank RKHS estimator of the influence function, computed without analytic derivations.</p>
 
         </article>
 
         <article class="paper" id="kdpe" data-bib-key="cho2024kernel">
           <div class="paper-heading">
-            <h3><a href="https://proceedings.mlr.press/v235/cho24c.html">Kernel Debiased Plug-in Estimation: Simultaneous, Automated Debiasing without Influence Functions for Many Target Parameters</a></h3>
+            <h3><a href="https://proceedings.mlr.press/v235/cho24c.html">Kernel Debiased Plug-in Estimation</a></h3>
             <p class="resources" aria-label="Paper resources"><span class="resource-separator" aria-hidden="true">/</span><a href="https://raw.githubusercontent.com/mlresearch/v235/main/assets/cho24c/cho24c.pdf">PDF</a></p>
           </div>
           <p class="authors">With <a class="coauthor" href="https://bcho.page/">Brian M. Cho</a>, <a class="coauthor" href="https://kyra-gan.github.io/">Kyra Gan</a>, <a class="coauthor" href="https://imalenica.github.io/">Ivana Malenica</a>.</p>
           <p class="venue">ICML, <time class="paper-year" datetime="2024">2024</time>.</p>
-          <p>RKHS-based targeted likelihood updates that debias multiple target parameters without explicitly computing their influence functions.</p>
+          <p>Targeted likelihood update along RKHS eignefunction directions yields debiased parameter estimators without requiring influence functions: i.e. TMLE without the IF. </p>
 
         </article>
 
@@ -207,7 +207,7 @@
           </div>
           <p class="authors">With <a class="coauthor" href="https://immorlica.com/">Nicole Immorlica</a>, <a class="coauthor" href="https://www.microsoft.com/en-us/research/people/brlucier/">Brendan Lucier</a>, <a class="coauthor" href="https://clathomasprime.github.io/">Clayton Thomas</a>, <a class="coauthor" href="https://ruqingxu.com/">Ruqing Xu</a>.</p>
           <p class="venue">WINE, <time class="paper-year" datetime="2026">2026</time> · Extended abstract forthcoming.</p>
-          <p>How knowing the source of a signal changes its informational value and the speed of learning.</p>
+          <p> Can data volume substitute for data provenance? We quantify the exchange rate. </p>
 
         </article>
 
@@ -217,7 +217,7 @@
           </div>
           <p class="authors">Yaroslav Mukhin.</p>
           <p class="venue">NeurIPS workshop, <time class="paper-year" datetime="2021">2021</time>.</p>
-          <p>Robustness of counterfactual conclusions in structural models.</p>
+          <p>Local bounds on counterfactuals via gradient descent.</p>
 
         </article>
 
@@ -228,7 +228,7 @@
           </div>
           <p class="authors">Yaroslav Mukhin.</p>
           <p class="venue">Preprint, <time class="paper-year" datetime="2018">2018</time>.</p>
-          <p>A geometric measure of local sensitivity linking changes in target and control parameters to influence functions and asymptotic covariance.</p>
+          <p>A geometric measure of local sensitivity linking perturbation in target and control parameters to influence functions and other functional gradients.</p>
 
         </article>
 
@@ -289,7 +289,7 @@
           </li>
           <li id="talk-wisconsin">
             <time class="talk-date" datetime="2026-10-20">20 Oct 2026</time>
-            <div>University of Wisconsin–Madison</div>
+            <div>University of Wisconsin–Madison — Econometrics</div>
           </li>
           <li id="talk-psu-cornell">
             <time class="talk-date" datetime="2026-10-17">17 Oct 2026</time>
@@ -298,24 +298,24 @@
           </li>
           <li id="talk-washu">
             <time class="talk-date" datetime="2026-10-09">9 Oct 2026</time>
-            <div><a href="https://sds.washu.edu/events/surrogate-powered-causal-inference-censored-outcomes">Washington University in St. Louis</a>
+            <div><a href="https://sds.washu.edu/events/surrogate-powered-causal-inference-censored-outcomes">Washington University in St. Louis — Statistics</a>
               <span class="talk-title">Surrogate-powered Causal Inference on Censored Outcomes</span></div>
           </li>
           <li id="talk-columbia">
             <time class="talk-date" datetime="2026-09-30">30 Sep 2026</time>
-            <div>Columbia University</div>
+            <div>Columbia University — Biostatistics </div>
           </li>
           <li id="talk-tilburg">
             <time class="talk-date" datetime="2026-09-17">17 Sep 2026</time>
-            <div>Tilburg University</div>
+            <div>Tilburg University — Econometrics</div>
           </li>
           <li id="talk-epfl">
             <time class="talk-date" datetime="2026-09-16">16 Sep 2026</time>
-            <div>EPFL</div>
+            <div>EPFL — Mathematics</div>
           </li>
           <li id="talk-copenhagen">
             <time class="talk-date" datetime="2026-09-14">14 Sep 2026</time>
-            <div><a href="https://publichealth.ku.dk/about-the-department/biostat/seminars-and-events/surrogate-powered-causal-inference-on-censored-outcomes/">University of Copenhagen</a>
+            <div><a href="https://publichealth.ku.dk/about-the-department/biostat/seminars-and-events/surrogate-powered-causal-inference-on-censored-outcomes/">University of Copenhagen — Biostatistics</a>
               <span class="talk-title">Surrogate-powered Causal Inference on Censored Outcomes</span></div>
           </li>
           <li id="talk-frejus">
@@ -335,7 +335,7 @@
           </li>
           <li id="talk-sigmetrics">
             <time class="talk-date" datetime="2026-06-12">12 Jun 2026</time>
-            <div><a href="https://sites.google.com/view/causal-inference-workshop-26/home">Causal Inference Workshop at ACM SIGMETRICS</a>
+            <div><a href="https://sites.google.com/view/causal-inference-workshop-26/home">Causal Inference Workshop at ACM SIGMETRICS —  Ann Arbor</a>
               <span class="talk-title">Spectral Estimation of Influence Functions via Kernel PCA</span></div>
           </li>
         </ul>
