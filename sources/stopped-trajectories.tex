@@ -1,0 +1,218 @@
+\begin{frame}{} % Stopped trajectories  %{{{
+
+  % =================================================================
+  % KNOBS FOR EASY ADJUSTMENT
+  % =================================================================
+  \def\myScale{0.90}      % <-- SCALE KNOB
+  \def\myXShift{-6cm}     % <-- X-POSITION KNOB
+  \def\myYShift{0.2cm}     % <-- Y-POSITION KNOB
+  % =================================================================
+
+  \begin{tikzpicture}[ %{{{
+      remember picture, overlay, % Absolute positioning
+      font=\sffamily,
+      % Color definitions for the 3 paths
+      bluePath/.style={ultra thick, draw=blue!80!black},
+      orangePath/.style={ultra thick, draw=orange!90!black},
+      purplePath/.style={ultra thick, draw=purple!80!black},
+      % Helper styles 
+      ghost/.style={dashed, opacity=0.4},
+      event marker/.style={circle, inner sep=2pt},
+      hollow marker/.style={circle, fill=white, inner sep=1.8pt, thick},
+      censor line/.style={thick, densely dotted}
+  ]
+
+      % Establish the absolute center
+      \coordinate (AnchorPoint) at ([xshift=\myXShift, yshift=\myYShift]current page.center);
+      
+      \begin{scope}[shift={(AnchorPoint)}, scale=\myScale, transform shape]
+
+          % =========================================================
+          % 1. BASE LAYER: PROBABILITY SPACE & FULL-DATA AXES
+          % =========================================================
+          \visible<1-24>{
+              % Cloud / Probability Space
+              \node[cloud, cloud puffs=16, cloud ignores aspect, minimum width=4cm, minimum height=1.9cm, 
+                    align=center, draw=black!70, fill=gray!5, thick] (omega) at (7.0, 4.4) 
+                    {$(\Omega, \mathcal{F}, \mathbb{P})$};
+                    
+              \node[event marker, fill=blue!80!black, label={[font=\small, text=blue!80!black]above:$\omega_1$}] (w1) at (6.0, 3.9) {};
+              \node[event marker, fill=orange!90!black, label={[font=\small, text=orange!90!black]above:$\omega_2$}] (w2) at (7.0, 3.7) {};
+              \node[event marker, fill=purple!80!black, label={[font=\small, text=purple!80!black]above:$\omega_3$}] (w3) at (8.1, 4.0) {};
+
+              % Full Data Axes
+              \node[anchor=west, font=\bfseries\large] at (-1, 4) {Full data };
+              \draw[->, thick] (-0.2, 0) -- (11, 0) node[below right] {time $t$};
+              \draw[->, thick] (0, -0.5) -- (0, 3) node[below left] {state $\mathcal{S}(t)$};
+              
+              \foreach \y/\s in {0/0 (\textbf{Alive}), 1/1 ($R$), 2/2 (\textbf{Dead})} {
+                  \draw[gray!30, dashed] (0, \y) -- (10.5, \y);
+                  \draw (-0.1, \y) -- (0.1, \y);
+                  \node[anchor=east, font=\small] at (-0.1, \y) {\s};
+              }
+              \node[anchor=north] at (10.5, -0.1) {$\overline{\tau}$};
+              \draw (10.5, -0.1) -- (10.5, 0.1);
+
+              % Full Data Text Box
+              \node[anchor=south west, draw=black!40, fill=green!15, rounded corners, inner sep=4pt] at (11.3, 0.5) {
+                  \begin{tabular}{l}
+                    \textbf{Full data:} \\[5pt] Death, $T$ \\[5pt] Recurrence, $R$ \\[5pt] Censoring, $C$ \\[10pt]
+                    \textbf{State process:} $\mathcal{S}(t)$ \\[5pt] $I(R \le t) + I(T \le t)$
+                  \end{tabular}
+              };
+          }
+
+          % =========================================================
+          % 2. FULL-DATA PATH UNROLLING
+          % =========================================================
+          % Path 1 (Blue)
+          \visible<2-24>{
+              \draw[-{Stealth}, thick, color=blue!80!black] (w1) to[out=270, in=120] (6.1, 2.1);
+              \draw[bluePath] (0, 0.1) -- (1.5, 0.1);
+          }
+          \visible<3-24>{
+              \draw[bluePath] (1.5, 0.1) -- (3, 0.1);
+          }
+          \visible<4-24>{
+              \draw[bluePath] (3, 0.1) -- (3, 1.1);
+              \node[event marker, fill=blue!80!black] at (3, 1.1) {}; 
+              \node[text=blue!80!black, above left, font=\small\bfseries] at (3, 1.1) {$R_1$};
+          }
+          \visible<5-24>{
+              \draw[bluePath] (3, 1.1) -- (6, 1.1);
+          }
+          \visible<6-24>{
+              \draw[bluePath] (6, 1.1) -- (6, 2.1);
+              \node[event marker, fill=blue!80!black] at (6, 2.1) {}; 
+              \node[text=blue!80!black, above left, font=\small\bfseries] at (6, 2.1) {$T_1$};
+          }
+          \visible<7-24>{
+              \draw[bluePath] (6, 2.1) -- (10.5, 2.1);
+          }
+
+          % Path 2 (Orange)
+          \visible<8-24>{
+              \draw[-{Stealth}, thick, color=orange!90!black] (w2) to[out=270, in=130] (7.3, 1.5);
+              \draw[orangePath] (0, 0) -- (7.5, 0);
+          }
+          \visible<9-24>{
+              \draw[orangePath] (7.5, 0) -- (7.5, 2);
+              \node[event marker, fill=orange!90!black] at (7.5, 2) {}; 
+              \node[text=orange!90!black, below right, font=\small\bfseries] at (7.5, 2) {$T_2$};
+          }
+          \visible<10-24>{
+              \draw[orangePath] (7.5, 2) -- (10.5, 2);
+          }
+
+          % Path 3 (Purple)
+          \visible<11-24>{
+              \draw[-{Stealth}, thick, color=purple!80!black] (w3) to[out=320, in=125] (8.9, 1.6);
+              \draw[purplePath] (0, -0.1) -- (2, -0.1);
+          }
+          \visible<12-24>{
+              \draw[purplePath] (2, -0.1) -- (2, 0.9);
+              \node[event marker, fill=purple!80!black] at (2, 0.9) {}; 
+              \node[text=purple!80!black, above left, font=\small\bfseries] at (2, 0.9) {$R_3$};
+          }
+          \visible<13-24>{
+              \draw[purplePath] (2, 0.9) -- (9, 0.9);
+          }
+          \visible<14-24>{
+              \draw[purplePath] (9, 0.9) -- (9, 1.9);
+              \node[event marker, fill=purple!80!black] at (9, 1.9) {};  
+              \node[text=purple!80!black, below right, font=\small\bfseries] at (9, 1.9) {$T_3$};
+          }
+          \visible<15-24>{
+              \draw[purplePath] (9, 1.9) -- (10.5, 1.9);
+          }
+
+          % Censoring Lines
+          \visible<16-24>{
+              \draw[censor line, draw=blue!80!black] (8, -0.3) -- (8, 2.6) node[above, font=\small\bfseries] {$C_1$};
+          }
+          \visible<17-24>{
+              \draw[censor line, draw=orange!90!black] (4, -0.3) -- (4, 2.6) node[above, font=\small\bfseries] {$C_2$};
+          }
+          \visible<18-24>{
+              \draw[censor line, draw=purple!80!black] (5, -0.3) -- (5, 2.6) node[above, font=\small\bfseries] {$C_3$};
+          }
+
+          % =========================================================
+          % 3. OBSERVED-DATA AXES SETUP
+          % =========================================================
+          \begin{scope}[yshift=-4.5cm]
+              \visible<19->{
+                  \node[anchor=west, font=\bfseries\large] at (-1, 3.5) {Observed data};
+                  \draw[->, thick] (-0.2, 0) -- (11, 0) node[below right] {time $t$};
+                  \draw[->, thick] (0, -0.5) -- (0, 3) node[below left] {state $\mathcal{S}(t)$};
+                  
+                  \foreach \y/\s in {0/0 (\textbf{Alive}), 1/1 ($\mathcolor{crimson}{\bm{R}}$), 2/2 (\textbf{Dead})} {
+                      \draw[gray!30, dashed] (0, \y) -- (10.5, \y);
+                      \draw (-0.1, \y) -- (0.1, \y);
+                      \node[anchor=east, font=\small] at (-0.1, \y) {\s};
+                  }
+                  \node[anchor=north] at (10.5, -0.1) {$\overline{\tau}$};
+                  \draw (10.5, -0.1) -- (10.5, 0.1);
+
+                  % Text Box
+                  \node[anchor=south west, draw=black!40, fill=yellow!15, rounded corners, inner sep=6pt] at (11.5, 0.2) {
+                      \begin{tabular}{l}
+                        \textbf{Observed events:} \\[5pt]
+                          $\tilde T:= T\wedge C$ \\[5pt]
+                          $\Delta:= I(T<C)$ \\[5pt]
+                          $\tilde R:= R\wedge T \wedge C $  \\[5pt]
+                          $\Gamma := I(R<\tilde T)$
+                      \end{tabular}
+                  };
+              }
+
+              % =========================================================
+              % 4. OBSERVED PATHS
+              % =========================================================
+              
+              % --- OBSERVED PATH 1 (Blue) ---
+              \visible<20->{
+                  \draw[bluePath] (0, 0.1) -- (3, 0.1) -- (3, 1.1) -- (6, 1.1) -- (6, 2.1) -- (10.5, 2.1);
+                  \node[event marker, fill=blue!80!black] at (3, 1.1) {}; 
+                  \node[text=blue!80!black, above left, font=\footnotesize] at (3, 1.1) {$\tilde{R}_1$};
+                  \node[event marker, fill=blue!80!black] at (6, 2.1) {};
+                  \node[text=blue!80!black, above left, font=\footnotesize] at (6, 2.1) {$\tilde{T}_1=T_1$};
+              }
+
+              % --- OBSERVED PATH 2 (Orange) ---
+              \visible<21->{
+                  \draw[orangePath] (0, 0) -- (4, 0);
+                  \draw[orangePath] (4, -0.1) -- (4, 0.1); % tick
+                  \node[text=orange!90!black, below, font=\footnotesize] at (4, -0.1) {$\tilde{T}_2=C_2$};
+                  \node[hollow marker, draw=orange!90!black] at (4, 0) {};
+              }
+              \visible<22->{
+                  % Ghosted missing path
+                  \draw[orangePath, ghost] (4, 0) -- (7.5, 0) -- (7.5, 2) -- (10.5, 2);
+                  \node[text=orange!90!black, ghost, below right, font=\footnotesize, yshift=-4pt] at (7.5, 2) {hidden $T_2$};
+                  \node[event marker, fill=orange!90!black, ghost] at (7.5, 2) {};
+              }
+
+              % --- OBSERVED PATH 3 (Purple) ---
+              \visible<23->{
+                  \draw[purplePath] (0, -0.1) -- (2, -0.1) -- (2, 0.9);
+                  \node[event marker, fill=purple!80!black] at (2, 0.9) {}; 
+                  \node[text=purple!80!black, above left, font=\footnotesize] at (2, 0.9) {$\tilde{R}_3$};
+                  \draw[purplePath] (2, 0.9) -- (5, 0.9);
+                  \draw[purplePath] (5, 0.8) -- (5, 1.0); % tick
+                  \node[text=purple!80!black, below, font=\footnotesize] at (5, 0.8) {$\tilde{T}_3=C_3$};
+                  \node[hollow marker, draw=purple!80!black] at (5, 0.9) {};
+              }
+              \visible<24->{
+                  % Ghosted missing path
+                  \draw[purplePath, ghost] (5, 0.9) -- (9, 0.9) -- (9, 1.9) -- (10.5, 1.9);
+                  \node[text=purple!80!black, ghost, below right, font=\footnotesize, yshift=-12pt] at (9, 1.9) {hidden $T_3$};
+                  \node[event marker, fill=purple!80!black, ghost] at (9, 1.9) {};
+              }
+
+          \end{scope}
+
+      \end{scope}
+  \end{tikzpicture} %}}}
+
+\end{frame}

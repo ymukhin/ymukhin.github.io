@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <title>Yaroslav Mukhin</title>
+  <rect width="32" height="32" fill="#fff"/>
+  <path d="M3 25H10V16H20V6H29" fill="none" stroke="#0000cc" stroke-width="2.3"/>
+  <path d="M3 28H14" fill="none" stroke="#e67300" stroke-width="2.3"/>
+  <path d="M14 28H24V9H29" fill="none" stroke="#e67300" stroke-width="1.8" stroke-dasharray="2 2"/>
+  <circle cx="14" cy="28" r="1.8" stroke="#e67300" stroke-width="1.4" fill="#fff"/>
+</svg>

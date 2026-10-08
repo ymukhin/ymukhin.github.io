@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yaroslav Mukhin | Cornell University</title>
+  <meta name="description" content="Yaroslav Mukhin — statistics, econometrics, and machine learning. Research on influence functions, kernel methods, survival analysis, and robust inference.">
+  <meta name="author" content="Yaroslav Mukhin">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <!-- Add a canonical URL here once the final domain is configured. -->
+</head>
+<body class="layout-responsive">
+  <a class="skip-link" href="#research">Skip to research</a>
+  <div class="page" id="top">
+
+    <!-- TOP PANEL. Replace assets/portrait.jpg with your own JPEG.
+         Responsive, 800px text column. Wide-screen artwork extends into the right
+         margin; compact overrides keep it inside the page on smaller screens.
+         It does not change biography placement or move to a second row. -->
+    <header class="masthead">
+      <img class="portrait" src="assets/portrait.jpg" width="765" height="765"
+           alt="Yaroslav Mukhin">
+      <div class="identity">
+        <h1>Yaroslav Mukhin</h1>
+        <p class="subtitle">Assistant Research Professor</p>
+        <p class="subtitle">Cornell University</p>
+        <p class="contact">
+          <span class="email-display" role="img" aria-label="Contact address shown as an image">
+            <span class="email-art" aria-hidden="true"></span>
+            <img class="email-print" src="assets/email.svg" width="160" height="20"
+                 alt="" aria-hidden="true">
+          </span>
+        </p>
+        <!-- Optional links: add real files/URLs before uncommenting.
+        <p class="contact">
+          <a href="files/cv.pdf">CV</a> / <a href="YOUR_GOOGLE_SCHOLAR_URL">Google Scholar</a>
+        </p>
+        -->
+      </div>
+      <figure class="header-art">
+        <div class="trajectory-art" role="img"
+             aria-label="Probability cloud above three observed illness–death paths. Dotted lines mark censoring. Solid paths are observed; pale dashed continuations are unobserved illustrations, not estimates."></div>
+        <img class="trajectory-print" src="assets/stopped-trajectories.svg"
+             width="395" height="185" alt="" aria-hidden="true">
+      </figure>
+    </header>
+
+    <!-- BIOGRAPHY. Edit this paragraph directly. -->
+    <section class="biography" id="about" aria-label="About me">
+      <p>I am an Assistant Research Professor at Cornell University, affiliated with the
+        <a href="https://datasciencecenter.cornell.edu/">Center for Data Science for Enterprise and Society</a>, the <a href="https://economics.cornell.edu/">Department of Economics</a>,
+        and the <a href="https://stat.cornell.edu/">Department of Statistics</a>. I work at the intersection of statistics,
+        econometrics, and machine learning.
+        My research develops methods for efficient and robust inference, with a focus on influence functions,
+        kernel methods, and causal inference.
+        I received my PhD in Economics and Statistics from MIT.
+        Previously, I taught statistics at <a href="https://economics.dartmouth.edu/">Dartmouth College</a> and <a href="https://idss.mit.edu/">MIT IDSS</a>.</p>
+    </section>
+
+    <!-- Single-page section links. -->
+    <nav class="site-nav" aria-label="Sections">
+      <ul class="nav">
+        <li class="nav"><a class="nav" href="#about">About</a></li>
+        <li class="nav"><a class="nav" href="#research">Research</a></li>
+        <li class="nav"><a class="nav" href="#work-in-progress">Work in progress</a></li>
+        <li class="nav"><a class="nav" href="#talks">Talks</a></li>
+        <li class="nav"><a class="nav" href="#teaching">Teaching</a></li>
+        <li class="nav"><a class="nav" href="#running">Running</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <!-- RESEARCH. Duplicate one article block to add another paper. -->
+      <section id="research" aria-labelledby="research-heading">
+        <h2 id="research-heading">Research</h2>
+        <!-- BEGIN GENERATED CITATIONS -->
+        <details class="citation-tools" id="citations">
+          <summary>Citations (BibTeX)</summary>
+          <p><a href="publications.bib" type="text/plain" download="mukhin-publications.bib">Download .bib file</a></p>
+          <pre><code>% Citation keys use first-author surname + four-digit year + short title keyword.
+
+@misc{mukhin2026surrogates,
+  title = {{Surrogate-powered Causal Inference with Censored Outcomes}},
+  author = {Yaroslav Mukhin and Tereza Oprea and Arielle Anderer and Christina Lee Yu and Jelena Bradic},
+  year = {2026},
+  eprint = {2610.05486},
+  archivePrefix = {arXiv},
+  primaryClass = {math.ST},
+  url = {https://arxiv.org/abs/2610.05486}
+}
+
+@inproceedings{mukhin2025kernel,
+  title = {{Kernel von Mises Formula of the Influence Function}},
+  author = {Yaroslav Mukhin},
+  year = {2025},
+  booktitle = {Advances in Neural Information Processing Systems},
+  volume = {38},
+  doi = {10.52202/085713-0324},
+  url = {https://papers.nips.cc/paper_files/paper/2025/hash/0dde49ec491174a11272c5e1e6013f9f-Abstract-Conference.html}
+}
+
+@inproceedings{cho2024kernel,
+  title = {{Kernel Debiased Plug-in Estimation: Simultaneous, Automated Debiasing without Influence Functions for Many Target Parameters}},
+  author = {Brian M. Cho and Yaroslav Mukhin and Kyra Gan and Ivana Malenica},
+  year = {2024},
+  booktitle = {Proceedings of the 41st International Conference on Machine Learning},
+  series = {Proceedings of Machine Learning Research},
+  volume = {235},
+  pages = {8534--8555},
+  publisher = {PMLR},
+  url = {https://proceedings.mlr.press/v235/cho24c.html}
+}
+
+@misc{immorlica2026learning,
+  title = {{Learning from a Mixture of Information Sources}},
+  author = {Nicole Immorlica and Brendan Lucier and Yaroslav Mukhin and Clayton Thomas and Ruqing Xu},
+  year = {2026},
+  eprint = {2609.33214},
+  archivePrefix = {arXiv},
+  primaryClass = {econ.TH},
+  note = {Extended abstract forthcoming at WINE 2026},
+  url = {https://arxiv.org/abs/2609.33214}
+}
+
+@misc{mukhin2021robustness,
+  title = {{On Robustness of Counterfactuals in Structural Models}},
+  author = {Yaroslav Mukhin},
+  year = {2021},
+  note = {NeurIPS workshop contribution; not a main-conference proceedings paper},
+  url = {https://sites.google.com/view/robustbayes-neurips21/accepted-papers}
+}
+
+@phdthesis{mukhin2019geometric,
+  title = {{Geometric Methods in Econometrics and Statistics}},
+  author = {Yaroslav Mukhin},
+  year = {2019},
+  school = {Massachusetts Institute of Technology},
+  type = {PhD thesis in Economics and Statistics},
+  url = {https://hdl.handle.net/1721.1/124058}
+}
+
+@misc{mukhin2018sensitivity,
+  title = {{Sensitivity of Regular Estimators}},
+  author = {Yaroslav Mukhin},
+  year = {2018},
+  eprint = {1805.08883},
+  archivePrefix = {arXiv},
+  primaryClass = {econ.EM},
+  url = {https://arxiv.org/abs/1805.08883}
+}</code></pre>
+        </details>
+        <!-- END GENERATED CITATIONS -->
+        <article class="paper" id="surrogates" data-bib-key="mukhin2026surrogates">
+          <div class="paper-heading">
+            <h3><a href="https://arxiv.org/abs/2610.05486">Surrogate-powered Causal Inference with Censored Outcomes</a></h3>
+            <p class="resources" aria-label="Paper resources"><span class="resource-separator" aria-hidden="true">/</span><a href="https://arxiv.org/pdf/2610.05486">PDF</a></p>
+          </div>
+          <p class="authors">With <a class="coauthor" href="https://cam.cornell.edu/people/tereza-oprea/">Tereza Oprea</a>, <a class="coauthor" href="https://aanderer.github.io/">Arielle Anderer</a>, <a class="coauthor" href="https://cleeyu.orie.cornell.edu/">Christina Lee Yu</a>, <a class="coauthor" href="https://www.jelenabradic.net/">Jelena Bradic</a>.</p>
+          <p class="venue">Preprint, <time class="paper-year" datetime="2026">2026</time>.</p>
+          <p>Using post-treatment histories to recover information lost to censoring, without changing the marginal causal estimand.</p>
+
+          <details class="figure-note" id="trajectory-note">
+            <summary>About the header graphic</summary>
+            <p>The header adapts the observed-data panel of my “Stopped trajectories” slide,
+              with the probability cloud and censoring cuts added from its upper panel.</p>
+            <figure>
+              <img src="assets/stopped-trajectories.svg" width="395" height="185"
+                   loading="lazy" alt="The probability space maps to three illness–death paths. Blue: recurrence at 3, observed death at 6, censoring at 8. Orange: censoring at 4, hidden death at 7.5. Purple: recurrence at 2, censoring at 5, hidden death at 9.">
+              <figcaption>Solid segments are observed. Pale dashed segments are illustrative hidden
+                continuations, not estimates. Vertical dotted lines mark censoring times;
+                open circles mark the two censored endpoints. The blue path remains in its known
+                absorbing state because death precedes censoring.</figcaption>
+            </figure>
+            <p class="resources"><a href="sources/observed-trajectories-web.tex" download="observed-trajectories-web.tex">Website TikZ source</a>
+              <span class="resource-separator" aria-hidden="true">/</span><a href="sources/stopped-trajectories.tex" download="stopped-trajectories.tex">Original slide frame</a></p>
+          </details>
+        </article>
+
+        <article class="paper" id="kif" data-bib-key="mukhin2025kernel">
+          <div class="paper-heading">
+            <h3><a href="https://papers.nips.cc/paper_files/paper/2025/hash/0dde49ec491174a11272c5e1e6013f9f-Abstract-Conference.html">Kernel von Mises Formula of the Influence Function</a></h3>
+            <p class="resources" aria-label="Paper resources"><span class="resource-separator" aria-hidden="true">/</span><a href="https://openreview.net/pdf?id=UwAgCUWJ21">PDF</a><span class="resource-separator" aria-hidden="true">/</span><a href="https://slideslive.com/39050475/kernel-von-mises-formula-of-the-influence-function">Talk</a></p>
+          </div>
+          <p class="authors">Yaroslav Mukhin.</p>
+          <p class="venue">NeurIPS, <time class="paper-year" datetime="2025">2025</time>.</p>
+          <p>A spectral representation and low-rank RKHS estimator of influence functions, computed without analytic derivations by the user.</p>
+
+        </article>
+
+        <article class="paper" id="kdpe" data-bib-key="cho2024kernel">
+          <div class="paper-heading">
+            <h3><a href="https://proceedings.mlr.press/v235/cho24c.html">Kernel Debiased Plug-in Estimation: Simultaneous, Automated Debiasing without Influence Functions for Many Target Parameters</a></h3>
+            <p class="resources" aria-label="Paper resources"><span class="resource-separator" aria-hidden="true">/</span><a href="https://raw.githubusercontent.com/mlresearch/v235/main/assets/cho24c/cho24c.pdf">PDF</a></p>
+          </div>
+          <p class="authors">With <a class="coauthor" href="https://bcho.page/">Brian M. Cho</a>, <a class="coauthor" href="https://kyra-gan.github.io/">Kyra Gan</a>, <a class="coauthor" href="https://imalenica.github.io/">Ivana Malenica</a>.</p>
+          <p class="venue">ICML, <time class="paper-year" datetime="2024">2024</time>.</p>
+          <p>RKHS-based targeted likelihood updates that debias multiple target parameters without explicitly computing their influence functions.</p>
+
+        </article>
+
+        <article class="paper" id="information-sources" data-bib-key="immorlica2026learning">
+          <div class="paper-heading">
+            <h3><a href="https://arxiv.org/abs/2609.33214">Learning from a Mixture of Information Sources</a></h3>
+            <p class="resources" aria-label="Paper resources"><span class="resource-separator" aria-hidden="true">/</span><a href="https://arxiv.org/pdf/2609.33214">PDF</a></p>
+          </div>
+          <p class="authors">With <a class="coauthor" href="https://immorlica.com/">Nicole Immorlica</a>, <a class="coauthor" href="https://www.microsoft.com/en-us/research/people/brlucier/">Brendan Lucier</a>, <a class="coauthor" href="https://clathomasprime.github.io/">Clayton Thomas</a>, <a class="coauthor" href="https://ruqingxu.com/">Ruqing Xu</a>.</p>
+          <p class="venue">WINE, <time class="paper-year" datetime="2026">2026</time> · Extended abstract forthcoming.</p>
+          <p>How knowing the source of a signal changes its informational value and the speed of learning.</p>
+
+        </article>
+
+        <article class="paper" id="robustness" data-bib-key="mukhin2021robustness">
+          <div class="paper-heading">
+            <h3><a href="https://sites.google.com/view/robustbayes-neurips21/accepted-papers">On Robustness of Counterfactuals in Structural Models</a></h3>
+          </div>
+          <p class="authors">Yaroslav Mukhin.</p>
+          <p class="venue">NeurIPS workshop, <time class="paper-year" datetime="2021">2021</time>.</p>
+          <p>Robustness of counterfactual conclusions in structural models.</p>
+
+        </article>
+
+        <article class="paper" id="sensitivity" data-bib-key="mukhin2018sensitivity">
+          <div class="paper-heading">
+            <h3><a href="https://arxiv.org/abs/1805.08883">Sensitivity of Regular Estimators</a></h3>
+            <p class="resources" aria-label="Paper resources"><span class="resource-separator" aria-hidden="true">/</span><a href="https://arxiv.org/pdf/1805.08883">PDF</a></p>
+          </div>
+          <p class="authors">Yaroslav Mukhin.</p>
+          <p class="venue">Preprint, <time class="paper-year" datetime="2018">2018</time>.</p>
+          <p>A geometric measure of local sensitivity linking changes in target and control parameters to influence functions and asymptotic covariance.</p>
+
+        </article>
+
+        <article class="paper" id="thesis" data-bib-key="mukhin2019geometric">
+          <div class="paper-heading">
+            <h3><a href="https://hdl.handle.net/1721.1/124058">Geometric Methods in Econometrics and Statistics</a></h3>
+          </div>
+          <p class="authors">Yaroslav Mukhin.</p>
+          <p class="venue">PhD thesis · MIT, <time class="paper-year" datetime="2019">2019</time>.</p>
+          <p>Differential and geometric approaches to statistical efficiency, sensitivity, and gradient flows in econometric models.</p>
+
+        </article>
+      </section>
+
+      <!-- WORK IN PROGRESS. Display titles are provisional. -->
+      <section id="work-in-progress" aria-labelledby="work-heading">
+        <h2 id="work-heading">Work in progress</h2>
+        <ul class="work-list">
+          <li>
+            <h3>Survival surrogates in labor economics</h3>
+            <p>With <a class="coauthor" href="https://www.jelenabradic.net/">Jelena Bradic</a> and <a class="coauthor" href="https://www.cgaillac.com/">Christophe Gaillac</a>.</p>
+          </li>
+          <li>
+            <h3>Partial identification with an RKHS criterion</h3>
+            <p>With <a class="coauthor" href="https://www.jelenabradic.net/">Jelena Bradic</a> and <a class="coauthor" href="https://francesca-molinari.github.io/">Francesca Molinari</a>.</p>
+          </li>
+          <li>
+            <h3>Automatic estimation of influence functions</h3>
+            <p>With <a class="coauthor" href="https://www.jelenabradic.net/">Jelena Bradic</a>.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- TALKS. No relative upcoming/past badges that could become stale. -->
+      <section id="talks" aria-labelledby="talks-heading">
+        <h2 id="talks-heading">Selected talks</h2>
+        <!-- Single main list. Individual presentation dates are distinguished from
+             conference date ranges. Unresolved editions remain undated rather
+             than being assigned to unrelated meetings. See docs/talk-sources.json. -->
+        <ul class="talk-list">
+          <li id="talk-eswm">
+            <span class="talk-date" title="Conference dates, not an individual talk date"><time datetime="2027-01-03">3–5 Jan 2027</time></span>
+            <div><a href="https://www.aeaweb.org/conference/2027">North American Winter Meeting of the Econometric Society — Washington, DC</a>
+              <span class="talk-meta">Conference dates </span></div>
+          </li>
+          <li id="talk-informs">
+            <span class="talk-date" title="Conference dates, not an individual talk date"><time datetime="2026-11-01">1–4 Nov 2026</time></span>
+            <div><a href="https://meetings.informs.org/wordpress/annual/">INFORMS Annual Meeting — San Francisco</a>
+              <span class="talk-meta">Conference dates</span></div>
+          </li>
+          <li id="talk-berkeley">
+            <time class="talk-date" datetime="2026-10-28">28 Oct 2026</time>
+            <div><a href="https://causal.berkeley.edu/">UC Berkeley — Causal Inference Group Meeting</a>
+          </li>
+          <li id="talk-uw">
+            <span class="talk-date" datetime="2026-10-22">22 Oct 2026</span>
+            <div><a href="https://www.biostat.washington.edu/news/calendar">University of Washington, Seattle — Biostatistics</a></div>
+          </li>
+          <li id="talk-wisconsin">
+            <time class="talk-date" datetime="2026-10-20">20 Oct 2026</time>
+            <div>University of Wisconsin–Madison</div>
+          </li>
+          <li id="talk-psu-cornell">
+            <time class="talk-date" datetime="2026-10-17">17 Oct 2026</time>
+            <div><a href="https://econ.la.psu.edu/events/2026-penn-state-cornell-conference-on-econometrics-and-io/">Cornell–Penn State Econometrics/IO Workshop</a> <a class="talk-program" href="https://econ.la.psu.edu/wp-content/uploads/sites/5/2026/05/Cornell_PennState_Econometrics_IO_2026_Program.pdf">/ Program</a>
+              <span class="talk-title">Surrogate-powered Causal Inference on Censored Outcomes</span></div>
+          </li>
+          <li id="talk-washu">
+            <time class="talk-date" datetime="2026-10-09">9 Oct 2026</time>
+            <div><a href="https://sds.washu.edu/events/surrogate-powered-causal-inference-censored-outcomes">Washington University in St. Louis</a>
+              <span class="talk-title">Surrogate-powered Causal Inference on Censored Outcomes</span></div>
+          </li>
+          <li id="talk-columbia">
+            <time class="talk-date" datetime="2026-09-30">30 Sep 2026</time>
+            <div>Columbia University</div>
+          </li>
+          <li id="talk-tilburg">
+            <time class="talk-date" datetime="2026-09-17">17 Sep 2026</time>
+            <div>Tilburg University</div>
+          </li>
+          <li id="talk-epfl">
+            <time class="talk-date" datetime="2026-09-16">16 Sep 2026</time>
+            <div>EPFL</div>
+          </li>
+          <li id="talk-copenhagen">
+            <time class="talk-date" datetime="2026-09-14">14 Sep 2026</time>
+            <div><a href="https://publichealth.ku.dk/about-the-department/biostat/seminars-and-events/surrogate-powered-causal-inference-on-censored-outcomes/">University of Copenhagen</a>
+              <span class="talk-title">Surrogate-powered Causal Inference on Censored Outcomes</span></div>
+          </li>
+          <li id="talk-frejus">
+            <time class="talk-date" datetime="2026-09-09">9 Sep 2026</time>
+            <div><a href="https://non-stdt-ml.sciencesconf.org/">Machine Learning in Nonstandard Settings — Fréjus</a> <a class="talk-program" href="https://non-stdt-ml.sciencesconf.org/program/graphic/date/2026-09-09">/ Program</a>
+              <span class="talk-title">Surrogate-powered causal inference on censored outcome</span></div>
+          </li>
+          <li id="talk-ims">
+            <span class="talk-date" title="Conference dates, not an individual talk date"><time datetime="2026-07-06">6–9 Jul 2026</time></span>
+            <div><a href="https://ims2026.github.io/IMS2026/">Institute of Mathematical Statistics (IMS) Annual Meeting — Salzburg</a>
+              <span class="talk-meta">Conference dates</span></div>
+          </li>
+          <li id="talk-aiml">
+            <span class="talk-date" title="Conference dates, not an individual talk date"><time datetime="2026-06-16">16–17 Jun 2026</time></span>
+            <div><a href="https://news.cornell.edu/stories/2026/06/econometrics-ai-conference-be-held-june-16-17">Economics and AI+Machine Learning Meeting (ESIF-AIML)</a> <a class="talk-program" href="https://virtual.oxfordabstracts.com/event/76417/homepage">/ Program</a>
+              <span class="talk-meta">Conference dates · Cornell University</span></div>
+          </li>
+          <li id="talk-sigmetrics">
+            <time class="talk-date" datetime="2026-06-12">12 Jun 2026</time>
+            <div><a href="https://sites.google.com/view/causal-inference-workshop-26/home">Causal Inference Workshop at ACM SIGMETRICS</a>
+              <span class="talk-title">Spectral Estimation of Influence Functions via Kernel PCA</span></div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="teaching" aria-labelledby="teaching-heading">
+        <h2 id="teaching-heading">Teaching</h2>
+        <p>I have taught statistics in the <a href="https://economics.dartmouth.edu/">Department of Economics at Dartmouth College</a> and at <a href="https://idss.mit.edu/">MIT IDSS</a>.</p>
+        <!-- Add course names, your role, terms, and links to public notes here. -->
+      </section>
+
+      <!-- RUNNING. Edit finish times at the precision in the original record.
+           docs/running-sources.json distinguishes supplied times from verified sources. -->
+      <section id="running" aria-labelledby="running-heading">
+        <h2 id="running-heading">Running</h2>
+        <ul class="running-list">
+          <li id="running-pemi-loop-2024">
+            <span class="running-year"><time datetime="2024-06-11" aria-label="June 11, 2024">2024<span class="running-date-detail">11 Jun</span></time></span>
+            <div>
+              Pemigewasset Loop
+              <span class="running-location">New Hampshire, USA</span>
+            </div>
+            <span class="running-time" aria-label="9 hours 4 minutes 56 seconds">9:04:56</span>
+          </li>
+          <li id="running-mckirdy-micro-2023">
+            <span class="running-year"><time datetime="2023-10-14" aria-label="October 14, 2023">2023<span class="running-date-detail">14 Oct</span></time></span>
+            <div>
+              McKirdy Micro 10K
+              <span class="running-location">Rockland Lake State Park, Valley Cottage, New York</span>
+            </div>
+            <span class="running-time" aria-label="35 minutes 35 seconds">35:35</span>
+          </li>
+          <li id="running-van-cortlandt-2023">
+            <span class="running-year"><time datetime="2023-09-24" aria-label="September 24, 2023">2023<span class="running-date-detail">24 Sep</span></time></span>
+            <div>
+                NYRR Van Cortlandt Park 5K
+                <span class="running-location">The Bronx, New York</span>
+              </div>
+            <span class="running-time" aria-label="19 minutes 5 seconds">19:05</span>
+          </li>
+          <li id="running-valencia-2022">
+            <span class="running-year"><time datetime="2022-12-04" aria-label="December 4, 2022">2022<span class="running-date-detail">4 Dec</span></time></span>
+            <div>
+              <a href="https://www.valenciaciudaddelrunning.com/en/marathon/2022-marathon-ranking/">Valencia Marathon</a>
+              <span class="running-location">Valencia, Spain</span>
+            </div>
+            <span class="running-time" aria-label="2 hours 42 minutes 24 seconds">2:42:24</span>
+          </li>
+          <li id="running-cambridge-2022">
+            <span class="running-year"><time datetime="2022-11-06" aria-label="November 6, 2022">2022<span class="running-date-detail">6 Nov</span></time></span>
+            <div>
+              <a href="https://kendallsquare.org/event/cambridge-half-marathon-at-cambridgeside-3/">Cambridge Half Marathon</a>
+              <span class="running-location">Cambridge, Massachusetts </span>
+            </div>
+            <span class="running-time" aria-label="1 hour 17 minutes 35 seconds">1:17:35</span>
+          </li>
+          <li id="running-new-bedford-2022">
+            <span class="running-year"><time datetime="2022-03-20" aria-label="March 20, 2022">2022<span class="running-date-detail">20 Mar</span></time></span>
+            <div>
+              <a href="https://results.raceroster.com/v3/events/bwd4jg4z6xcksexc/race/299608/participant/5wbzpecedazwkh59?filter_search=">New Bedford Half Marathon</a>
+              <span class="running-location">New Bedford, Massachusetts</span>
+            </div>
+            <span class="running-time" aria-label="1 hour 18 minutes 22 seconds">1:18:17</span>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <a href="#top">Back to top</a>
+    </footer>
+  </div>
+</body>
+</html>

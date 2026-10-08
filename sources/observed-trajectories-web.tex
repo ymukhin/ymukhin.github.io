@@ -1,0 +1,96 @@
+% Website adaptation of slides.tex, frame "Stopped trajectories".
+% Only the observed-data panel is retained. The cloud and censoring cuts
+% are moved from the full-data panel to this panel. Event times are unchanged.
+% Compile with LuaLaTeX so Metropolis uses the presentation's Fira fonts.
+\documentclass[10pt]{beamer}
+\usetheme{metropolis}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows.meta,shapes.symbols}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{3pt}
+\setbeamercolor{normal text}{fg=black,bg=white}
+\begin{document}
+\begin{frame}[plain]
+\begin{tikzpicture}[
+    font=\sffamily,
+    bluePath/.style={ultra thick,draw=blue!80!black},
+    orangePath/.style={ultra thick,draw=orange!90!black},
+    purplePath/.style={ultra thick,draw=purple!80!black},
+    ghost/.style={dashed,opacity=0.4},
+    event marker/.style={circle,inner sep=2pt},
+    hollow marker/.style={circle,fill=white,inner sep=1.8pt,thick},
+    censor line/.style={thick,densely dotted}]
+
+  % Background scaffolding: axes and the three state levels.
+  \draw[->,thick,black!70] (-0.2,0) -- (11,0) node[below right] {time $t$};
+  \draw[->,thick,black!70] (0,-0.5) -- (0,3) node[above] {$\mathcal{S}(t)$};
+  \foreach \y/\s in {0/{0 (Alive)},1/{1 ($R$)},2/{2 (Dead)}} {
+    \draw[gray!30,dashed] (0,\y) -- (10.5,\y);
+    \draw[black!65] (-0.1,\y) -- (0.1,\y);
+    \node[anchor=east,font=\small] at (-0.15,\y) {\s};
+  }
+  \node[anchor=north] at (10.5,-0.1) {$\overline{\tau}$};
+  \draw (10.5,-0.1) -- (10.5,0.1);
+
+  % Censoring cuts from the upper panel: C1=8, C2=4, C3=5.
+  % C1 is after death, so the blue absorbing-state path remains observed.
+  \draw[censor line,blue!80!black] (8,-0.3) -- (8,2.65)
+    node[above,font=\small] {$C_1$};
+  \draw[censor line,orange!90!black] (4,-0.3) -- (4,2.65)
+    node[above,font=\small] {$C_2$};
+  \draw[censor line,purple!80!black] (5,-0.3) -- (5,2.65)
+    node[above,font=\small] {$C_3$};
+
+  % Hidden continuations, behind the observed paths.
+  \draw[orangePath,ghost] (4,0) -- (7.5,0) -- (7.5,2) -- (10.5,2);
+  \node[event marker,fill=orange!90!black,ghost] at (7.5,2) {};
+  \node[text=orange!90!black,ghost,below left,font=\footnotesize]
+    at (7.4,1.97) {hidden $T_2$};
+  \draw[purplePath,ghost] (5,0.9) -- (9,0.9) -- (9,1.9) -- (10.5,1.9);
+  \node[event marker,fill=purple!80!black,ghost] at (9,1.9) {};
+  \node[text=purple!80!black,ghost,below right,font=\footnotesize]
+    at (9.05,1.75) {hidden $T_3$};
+
+  % Observed blue path. Death at 6 is known before censoring at 8.
+  \draw[bluePath] (0,0.1) -- (3,0.1) -- (3,1.1) -- (6,1.1) -- (6,2.1) -- (10.5,2.1);
+  \node[event marker,fill=blue!80!black] at (3,1.1) {};
+  \node[text=blue!80!black,above left,font=\footnotesize] at (3,1.1) {$\tilde R_1$};
+  \node[event marker,fill=blue!80!black] at (6,2.1) {};
+  \node[text=blue!80!black,above left,font=\footnotesize] at (6,2.1) {$\tilde T_1$};
+
+  % Orange: observation stops at C2=4, before the unobserved death at 7.5.
+  \draw[orangePath] (0,0) -- (4,0);
+  \draw[orangePath] (4,-0.1) -- (4,0.1);
+  \node[hollow marker,draw=orange!90!black] at (4,0) {};
+  \node[text=orange!90!black,below,font=\footnotesize] at (4,-0.3) {$\tilde T_2=C_2$};
+
+  % Purple: recurrence at 2 is observed; observation stops at C3=5.
+  \draw[purplePath] (0,-0.1) -- (2,-0.1) -- (2,0.9) -- (5,0.9);
+  \node[event marker,fill=purple!80!black] at (2,0.9) {};
+  \node[text=purple!80!black,above left,font=\footnotesize] at (2,0.9) {$\tilde R_3$};
+  \draw[purplePath] (5,0.8) -- (5,1.0);
+  \node[hollow marker,draw=purple!80!black] at (5,0.9) {};
+  \node[text=purple!80!black,below right,font=\footnotesize] at (5,0.8) {$\tilde T_3=C_3$};
+
+  % Probability cloud: copied from the upper panel, slightly lifted to
+  % make space for the censoring labels. Curves identify the three paths.
+  \node[cloud,cloud puffs=16,cloud ignores aspect,minimum width=4cm,
+        minimum height=1.9cm,align=center,draw=black!70,fill=gray!5,thick]
+        (omega) at (7,4.5) {$(\Omega,\mathcal F,\mathbb P)$};
+  \node[event marker,fill=blue!80!black,
+        label={[font=\small,text=blue!80!black]above:$\omega_1$}]
+        (w1) at (6,4.0) {};
+  \node[event marker,fill=orange!90!black,
+        label={[font=\small,text=orange!90!black]above:$\omega_2$}]
+        (w2) at (7,3.8) {};
+  \node[event marker,fill=purple!80!black,
+        label={[font=\small,text=purple!80!black]above:$\omega_3$}]
+        (w3) at (8.1,4.1) {};
+  \draw[-{Stealth},thick,blue!80!black] (w1) to[out=270,in=120] (6.15,2.18);
+  \draw[-{Stealth},thick,orange!90!black] (w2) to[out=270,in=120] (7.5,2.08);
+  \draw[-{Stealth},thick,purple!80!black] (w3) to[out=320,in=100] (9.05,1.98);
+\end{tikzpicture}
+\end{frame}
+\end{document}

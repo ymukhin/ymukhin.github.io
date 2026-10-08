@@ -1,0 +1,477 @@
+/* LAYOUT CONTROLS
+ * Edit these values, save, and reload the browser. No compilation is needed.
+ * Positive x/y offsets move an element right/down; negative values move it left/up.
+ * The artwork does not change the header's height; large-screen offsets
+ * intentionally extend the drawing into the right margin.
+ * Enlarging or translating it can overlap adjacent text: preview after editing.
+ */
+:root {
+  /* Page */
+  --page-width: 800px;
+  --side-gutter: 32px;
+  --page-top: 38px;
+  --page-bottom: 46px;
+  --anchor-offset: 24px;
+
+  /* Portrait and identity */
+  --portrait-width: 160px;
+  --portrait-ratio: 5 / 6;
+  --portrait-crop-x: 50%;
+  --portrait-crop-y: 35%;
+  --portrait-x: 0px;
+  --portrait-y: 0px;
+  --header-gap: 24px;
+  --header-bottom-gap: 28px;
+  --identity-top: 6px;
+  --identity-x: 0px;
+  --identity-y: 0px;
+  --name-bottom-gap: 13px;
+
+  /* Header artwork (CSS background; the SVG need not be rebuilt) */
+  --artifact-overlap: 240px; /* Enlarge leftward into the SVG's transparent upper-left margin. */
+  --artifact-size: contain; /* contain, or an explicit width such as 250px auto */
+  --artifact-scale: 1.1;      /* 1 = fitted size; 0.9 = 10% smaller; 1.1 = 10% larger */
+  --artifact-x: 90px;
+  --artifact-y: 25px;
+  --artifact-align-x: 100%; /* 0% left, 50% center, 100% right */
+  --artifact-align-y: 80%;  /* 0% top, 50% center, 100% bottom */
+  --artifact-origin: right center;
+  --artifact-opacity: 1;
+  --artifact-bottom-inset: 8px; /* Clearance for scale 1.1 and +25px y; avoids moving the bio. */
+
+  /* Noninteractive address graphic */
+  --contact-top-gap: 7px;
+  --email-width: 160px;
+  --email-height: 20px;
+  --email-x: 0px;
+  --email-y: 0px;
+
+  /* Typography */
+  --body-font: Arial, sans-serif;
+  --name-font: Palatino, serif;
+  --body-size: 12pt;
+  --name-size: 36pt;
+  --subtitle-size: 14pt;
+  --nav-size: 13pt;
+  --section-title-size: 22pt;
+  --paper-title-size: 13pt;
+  --small-size: 10pt;
+  --body-leading: normal;
+
+  /* Content spacing */
+  --paragraph-gap: 12px;
+  --biography-bottom-gap: 23px;
+  --nav-bottom-gap: 33px;
+  --nav-item-width: 120px;
+  --nav-padding-x: 14px;
+  --nav-padding-y: 8px;
+  --section-gap: 34px;
+  --section-title-gap: 20px;
+  --paper-gap: 23px;
+  --paper-line-gap: 3px;
+  --resource-gap: 14px;
+  --work-gap: 15px;
+  --talk-gap: 12px;
+  --talk-date-width: 118px;
+  --talk-column-gap: 12px;
+
+  /* Running: year/date | event or route and details | time */
+  --running-gap: 12px;
+  --running-year-width: 60px;
+  --running-time-width: 76px;
+  --running-column-gap: 16px;
+  --running-location-gap: 3px;
+  --expanded-figure-width: 590px;
+  --footer-top-gap: 42px;
+
+  /* Colors */
+  --background: #fff;
+  --text: #000;
+  --link: #0000ee;
+  --visited-link: #551a8b;
+  --nav-hover: #265f75;
+  --focus: #398eb2;
+  --muted: #555;
+  --rule: #d8d8d8;
+}
+
+/* DESKTOP ARTWORK PLACEMENT
+ * The requested 240px overlap, 1.1 scale, +90px x and +25px y are used above.
+ * +90px extends the graphic beyond the 800px text column. The transformed
+ * box would extend about 35px below the portrait without a bottom inset.
+ * Reserve 8px in the art slot so its ink clears the bio without adding header
+ * height. Check again after
+ * changing the image, fonts, header gap, or vertical offset.
+ * Below 1024px there is not enough spare right margin for that +90px shift.
+ * Restore a contained drawing there rather than clipping it or adding a row.
+ */
+@media (max-width: 1023px) {
+  :root {
+    --artifact-overlap: 60px;
+    --artifact-bottom-inset: 0px;
+    --artifact-scale: 1;
+    --artifact-x: 0px;
+    --artifact-y: 0px;
+  }
+}
+
+/* SMALL-SCREEN CONTROLS
+ * These override the values above only at the indicated viewport sizes.
+ * Breakpoint numbers are literal because CSS variables cannot set media queries.
+ * The structural rule hiding header art below 760px is in RESPONSIVE LAYOUT below.
+ */
+@media (max-width: 863px) {
+  :root {
+    --page-top: 26px; --side-gutter: 24px; --page-bottom: 32px;
+    --header-gap: 20px; --nav-item-width: 0px;
+    --nav-padding-x: 13px; --nav-bottom-gap: 27px;
+  }
+}
+@media (max-width: 759px) {
+  :root { --name-size: 34pt; }
+}
+@media (max-width: 580px) {
+  :root {
+    --name-size: 25pt; --subtitle-size: 12pt; --section-title-size: 20pt;
+    --page-top: 23px; --side-gutter: 20px; --page-bottom: 30px;
+    --portrait-width: 128px; --header-gap: 19px; --identity-top: 0px;
+    --name-bottom-gap: 10px; --nav-size: 12pt; --nav-padding-x: 11px;
+  }
+}
+@media (max-width: 400px) {
+  :root {
+    --side-gutter: 18px; --portrait-width: 104px; --header-gap: 17px;
+    --name-size: 23pt; --subtitle-size: 11pt; --nav-padding-x: 9px;
+    --running-year-width: 40px; --running-time-width: 65px; --running-column-gap: 10px;
+  }
+}
+
+/* STYLES: the controls above are applied below. */
+* { box-sizing: border-box; }
+html { scroll-padding-top: var(--anchor-offset); }
+body {
+  margin: 0;
+  padding: var(--page-top) var(--side-gutter) var(--page-bottom);
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--body-font);
+  font-size: medium;
+  font-weight: 400;
+  line-height: var(--body-leading);
+  letter-spacing: normal;
+}
+.page { max-width: var(--page-width); margin: 0 auto; }
+a { color: var(--link); text-underline-offset: 2px; }
+a:visited { color: var(--visited-link); }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 4px;
+}
+p { margin: 0 0 var(--paragraph-gap); font-size: var(--body-size); text-indent: 0; }
+img { max-width: 100%; height: auto; }
+
+/* COMPACT TOP PANEL: only the portrait and identity determine its height.
+   The artwork is an absolutely positioned CSS background inside that height.
+   It is right-aligned within the page, never out in the margin, and never
+   creates another row. The empty upper-left SVG region permits a slight
+   overlap with the name's box without obscuring any glyphs. */
+.masthead {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--portrait-width) max-content minmax(0, 1fr);
+  gap: var(--header-gap);
+  align-items: start;
+  isolation: isolate;
+  margin: 0 0 var(--header-bottom-gap);
+}
+.portrait {
+  grid-column: 1;
+  grid-row: 1;
+  display: block;
+  width: 100%;
+  aspect-ratio: var(--portrait-ratio);
+  object-fit: cover;
+  object-position: var(--portrait-crop-x) var(--portrait-crop-y);
+  transform: translate(var(--portrait-x), var(--portrait-y));
+}
+.identity {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  padding-top: var(--identity-top);
+  transform: translate(var(--identity-x), var(--identity-y));
+  position: relative;
+  z-index: 1;
+}
+h1 {
+  margin: 0 0 var(--name-bottom-gap);
+  font-family: var(--name-font);
+  font-size: var(--name-size);
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+.subtitle {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: var(--subtitle-size);
+  line-height: normal;
+}
+.contact { margin: var(--contact-top-gap) 0 0; }
+.contact a { white-space: nowrap; }
+/* The address exists only as outlined paths, not as HTML or SVG text.
+   The generic label announces the image, but does not reveal the address.
+   Printing and forced-color modes use the same vector image, not hidden text. */
+.email-display {
+  display: inline-block;
+  max-width: 100%;
+  line-height: 0;
+  cursor: default;
+  transform: translate(var(--email-x), var(--email-y));
+}
+.email-art, .email-print {
+  width: var(--email-width);
+  max-width: 100%;
+  height: var(--email-height);
+}
+.email-art {
+  display: inline-block;
+  background-image: url("assets/email.svg");
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.email-print { display: none; object-fit: contain; object-position: left center; }
+
+.header-art {
+  position: absolute;
+  grid-column: 3;
+  grid-row: 1;
+  inset: 0 0 var(--artifact-bottom-inset) calc(-1 * var(--artifact-overlap));
+  width: auto;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 0;
+}
+/* Scale the SVG to the available header height without adding a caption. */
+.trajectory-art {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  background-image: url("assets/stopped-trajectories.svg");
+  background-repeat: no-repeat;
+  background-position: var(--artifact-align-x) var(--artifact-align-y);
+  background-size: var(--artifact-size);
+  transform: translate(var(--artifact-x), var(--artifact-y)) scale(var(--artifact-scale));
+  transform-origin: var(--artifact-origin);
+  opacity: var(--artifact-opacity);
+}
+/* Hidden until printing, where browsers may omit background images. */
+.trajectory-print { display: none; }
+
+/* The biography immediately follows the top panel. */
+.biography { margin-bottom: var(--biography-bottom-gap); }
+.biography p { margin: 0; }
+
+/* Single-page navigation. */
+.site-nav { margin: 0 0 var(--nav-bottom-gap); }
+ul.nav {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: var(--nav-size);
+}
+li.nav { margin: 0; }
+a.nav {
+  display: block;
+  min-width: var(--nav-item-width);
+  padding: var(--nav-padding-y) var(--nav-padding-x);
+  color: #000;
+  text-decoration: none;
+  line-height: normal;
+}
+a.nav:visited { color: #000; }
+a.nav:hover, a.nav:focus-visible {
+  background-color: var(--nav-hover);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* PLAIN ACADEMIC CONTENT: no cards, badges, shadows, or decorative panels. */
+section { scroll-margin-top: var(--anchor-offset); }
+section + section { margin-top: var(--section-gap); }
+h2 {
+  margin: 0 0 var(--section-title-gap);
+  font: normal var(--section-title-size)/1.2 var(--name-font);
+}
+h3 {
+  margin: 0 0 3px;
+  /* Regular-weight titles keep the publication list text-first. */
+  font: normal var(--paper-title-size)/normal var(--body-font);
+}
+.paper { margin: 0 0 var(--paper-gap); scroll-margin-top: var(--anchor-offset); }
+.paper:last-child { margin-bottom: 0; }
+.paper p { margin: var(--paper-line-gap) 0 0; }
+.paper .authors { color: #333; }
+.paper .venue { font-style: italic; color: #333; }
+/* The title and / PDF / Talk / Slides share a row; on phones they wrap. */
+.paper-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px var(--resource-gap);
+}
+.paper-heading h3 { min-width: 0; flex: 0 1 auto; margin-bottom: 0; }
+.paper-heading .resources {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: baseline;
+  margin: 0;
+  font-size: var(--body-size);
+}
+.paper-heading .resources .resource-separator:first-child { padding-left: 0; }
+.paper .resources { margin-top: 0; }
+.resources a { white-space: nowrap; }
+.resource-separator { padding: 0 6px; color: #777; }
+.section-note { margin: -9px 0 19px; color: var(--muted); }
+.section-note a { font-size: 10.5pt; }
+.work-list { font-size: var(--body-size); list-style: none; padding: 0; margin: 0; }
+.work-list li { margin: 0 0 var(--work-gap); }
+.work-list p { margin: 2px 0 0; color: #333; }
+.talk-list { font-size: var(--body-size); list-style: none; margin: 0 0 12px; padding: 0; }
+.talk-list li {
+  display: grid;
+  grid-template-columns: var(--talk-date-width) minmax(0, 1fr);
+  gap: var(--talk-column-gap);
+  margin: 0 0 var(--talk-gap);
+}
+.talk-date { color: #444; font-variant-numeric: tabular-nums; }
+.talk-title { display: block; }
+
+/* Running: aligned races and runs; preserve supplied dates and time precision. */
+.running-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--body-size);
+}
+.running-list li {
+  display: grid;
+  grid-template-columns: var(--running-year-width) minmax(0, 1fr) var(--running-time-width);
+  column-gap: var(--running-column-gap);
+  align-items: baseline;
+  margin: 0 0 var(--running-gap);
+}
+.running-year { color: #444; font-variant-numeric: tabular-nums; }
+.running-date-detail { display: block; margin-top: var(--running-location-gap); color: var(--muted); font-size: var(--small-size); white-space: nowrap; }
+.running-location { display: block; margin-top: var(--running-location-gap); color: var(--muted); font-size: var(--small-size); }
+.running-time { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* Citation records are usable without any script or download permission. */
+.citation-tools { margin: -9px 0 20px; font-size: 10.5pt; color: var(--muted); }
+.citation-tools summary { width: fit-content; cursor: pointer; }
+.citation-tools summary:hover { color: var(--link); }
+.citation-tools[open] summary { margin-bottom: 12px; }
+.citation-tools p { margin: 8px 0; }
+.citation-tools pre {
+  max-width: 100%;
+  margin: 12px 0 18px;
+  padding: 12px 0 12px 14px;
+  border-left: 1px solid var(--rule);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: normal 10pt/1.4 monospace;
+  color: #222;
+}
+.coauthor { color: inherit; text-decoration-color: #aaa; }
+.coauthor:visited { color: inherit; }
+.coauthor:hover { color: var(--link); text-decoration-color: currentColor; }
+
+/* Optional scientific explanation, expanded only at the visitor's request. */
+.figure-note { margin-top: 8px; font-size: var(--small-size); }
+.figure-note summary { width: fit-content; cursor: pointer; color: var(--muted); }
+.figure-note summary:hover { color: var(--link); }
+.figure-note[open] { margin: 14px 0 24px; }
+.figure-note[open] summary { margin-bottom: 14px; }
+.figure-note p { max-width: 760px; }
+.figure-note figure { margin: 16px 0; max-width: var(--expanded-figure-width); }
+.figure-note img { display: block; width: 100%; }
+.figure-note figcaption { margin-top: 14px; font-size: var(--small-size); color: #444; }
+footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin-top: var(--footer-top-gap);
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  color: #666;
+  font-size: 9pt;
+}
+footer a, footer a:visited { color: inherit; margin-left: auto; }
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 10;
+  padding: 8px 12px;
+  background: white;
+}
+.skip-link:focus { top: 8px; }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* RESPONSIVE LAYOUT: artwork stays within the same header or is hidden. */
+@media (max-width: 759px) {
+  .masthead { grid-template-columns: var(--portrait-width) minmax(0, 1fr); }
+  .header-art { display: none; }
+}
+@media (max-width: 580px) {
+  .talk-list li { grid-template-columns: 1fr; gap: 1px; }
+  .talk-list .date-unspecified { display: none; }
+  .paper-heading { display: block; }
+  .paper-heading h3 { display: inline; }
+  .paper-heading .resources { display: inline-flex; margin-left: 8px; }
+}
+@media (forced-colors: active) {
+  .email-art { display: none; }
+  .email-print { display: inline-block; background: white; forced-color-adjust: none; }
+  .email-display { line-height: normal; }
+  .trajectory-art { display: none; }
+  .trajectory-print { display: block; }
+  .header-art { display: none; }
+}
+@media print {
+  body { padding: 0; font-size: var(--small-size); background-image: none; }
+  .page { max-width: none; margin: 0; }
+  .trajectory-art, .email-art { display: none; }
+  .trajectory-print { display: block; width: 100%; }
+  .email-print { display: inline-block; background: white; forced-color-adjust: none; }
+  .email-display { line-height: normal; }
+  .site-nav, .skip-link, .figure-note, .citation-tools, footer { display: none; }
+  .masthead { grid-template-columns: 100px minmax(0, 1fr); gap: 22px; }
+  .header-art { display: none; }
+  h1 { font-size: 30pt; }
+  a, a:visited { color: #000; }
+  .paper, .work-list li, .talk-list li, .running-list li { break-inside: avoid; }
+  h2, h3 { break-after: avoid; }
+}
+
+/* Distinguish meeting-wide dates from confirmed individual talk dates. */
+.talk-meta { display: block; color: var(--muted); font-size: var(--small-size); margin-top: 2px; }
+.talk-program { font-size: var(--small-size); white-space: nowrap; }
